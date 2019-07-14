@@ -2,7 +2,7 @@ from . import Config
 
 
 class Development(Config):
-    ENV_TYPE =  "Development"
+    ENV_TYPE = "Development"
 
     DB_NAME = "praksa_2019"
     DB_USER = "Nemanja"

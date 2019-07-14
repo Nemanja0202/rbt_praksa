@@ -1,12 +1,9 @@
-import os
 from app import db
 from flask_restplus import Resource
 from measurement_bp import measurements_api
 from app import Conf
 from measurement_bp.models.Measurement import Measurement
 from measurement_bp.schemas.CreateMeasurementSchema import CreateMeasurementSchema
-from marshmallow import ValidationError
-
 from functools import wraps
 from werkzeug.exceptions import Forbidden
 from flask import request
@@ -37,4 +34,4 @@ class Measurements(Resource):
         db.session.add(measurement)
         db.session.commit()
 
-        return {'message': 'Inserted measurement.'}, 200
+        return {'message': 'Measurement added'}, 200

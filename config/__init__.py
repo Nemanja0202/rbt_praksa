@@ -3,7 +3,6 @@ class Config:
     ENV_TYPE = None
 
     DEBUG = False
-    
 
     DB_NAME = None
     DB_USER = None

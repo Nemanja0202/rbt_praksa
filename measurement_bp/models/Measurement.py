@@ -1,4 +1,3 @@
-import os
 from app import db
 from sqlalchemy import Column, Integer, Float
 from datetime import datetime

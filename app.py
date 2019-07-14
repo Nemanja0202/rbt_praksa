@@ -13,10 +13,9 @@ db = SQLAlchemy()
 
 
 from marshmallow import ValidationError
-from flask import jsonify
 from measurement_bp import measurements_bp
-from measurement_bp.models.Measurement import Measurement
-from measurement_bp.models.Users import Users
+from users_bp import users_bp
+
 
 def create_app(conf):
     app = Flask(__name__)
@@ -25,9 +24,11 @@ def create_app(conf):
 
     migrate = Migrate(app, db)
     app.register_blueprint(measurements_bp)
+    app.register_blueprint(users_bp)
 
     return app
-    
+
+
 app = create_app(Conf)
 
 
