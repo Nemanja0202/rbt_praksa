@@ -11,18 +11,18 @@ from functools import wraps
 from werkzeug.exceptions import Forbidden
 from flask import request
 
+
 def authentication_required(f):
     @wraps(f)
     def wrapped(*args, **kwargs):
         if not request.authorization:
             raise Forbidden
 
-        if request.authorization['username'] ==Conf.username and request.authorization['password']==Conf.password:
+        if request.authorization['username'] == Conf.username and request.authorization['password'] == Conf.password:
             return f(*args, **kwargs)
         else:
             raise Forbidden
     return wrapped
-
 
 
 @measurements_api.route("/")
@@ -37,6 +37,4 @@ class Measurements(Resource):
         db.session.add(measurement)
         db.session.commit()
 
-
         return {'message': 'Inserted measurement.'}, 200
-
