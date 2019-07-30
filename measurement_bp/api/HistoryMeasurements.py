@@ -12,10 +12,16 @@ from measurement_bp.schemas.GetMeasurementSchema import GetMeasurementSchema
 class HistoryMeasurement(Resource):
 
     def get(self, start_date, end_date, limit):
-        start_date_format = datetime.fromtimestamp(start_date)
-        end_date_format = datetime.fromtimestamp(end_date)
+        if isinstance(start_date, int) and isinstance(end_date, int) and isinstance(limit, int):
+            if limit > 0:
+                start_date_format = datetime.fromtimestamp(start_date)
+                end_date_format = datetime.fromtimestamp(end_date)
 
-        data = db.session.query(Measurement).filter(Measurement.time_stamp > start_date_format, Measurement.time_stamp < end_date_format).all()
-        get_schema = GetMeasurementSchema(many=True).dump(data)
-        step = math.ceil(len(data) / limit)
-        return get_schema[::-step]
+                data = db.session.query(Measurement).filter(Measurement.time_stamp > start_date_format, Measurement.time_stamp < end_date_format).all()
+                get_schema = GetMeasurementSchema(many=True).dump(data)
+                step = math.ceil(len(data) / limit)
+                return get_schema[::-step]
+            else:
+                return print("Limit needs to be more than 0")
+        else:
+            return print("Please provide the start date, end date and limit as a number")

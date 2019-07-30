@@ -13,10 +13,3 @@ class GetMeasurement(Resource):
         data = data[-1]
         get_schema = GetMeasurementSchema().dump(data)
         return get_schema
-
-    # data = db.session.query(Measurement).all()
-    # results = []
-    # for item in data:
-    #     get_schema = GetMeasurementSchema().dump(item)
-    #     results.append(get_schema)
-    # return results
