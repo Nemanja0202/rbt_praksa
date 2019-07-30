@@ -14,3 +14,4 @@ def _handle_api_error(ex):
 
 from measurement_bp.api.Measurement import Measurements
 from measurement_bp.api.GetMeasurement import GetMeasurement
+from measurement_bp.api.HistoryMeasurements import HistoryMeasurement

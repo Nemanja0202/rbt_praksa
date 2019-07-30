@@ -7,7 +7,7 @@ from measurement_bp.schemas.GetMeasurementSchema import GetMeasurementSchema
 
 @measurements_api.route("/latest", methods=['GET'])
 class GetMeasurement(Resource):
-    
+
     def get(self):
         data = db.session.query(Measurement).all()
         data = data[-1]

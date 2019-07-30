@@ -30,7 +30,7 @@ class Measurements(Resource):
         data = request.get_json(force=True)
 
         validated_data = CreateMeasurementSchema().load(data)
-        measurement = Measurement(air_quality=data['air_quality'], temperature = data["temperature"], humidity = data["humidity"])
+        measurement = Measurement(air_quality=data['air_quality'], temperature=data["temperature"], humidity=data["humidity"])
         db.session.add(measurement)
         db.session.commit()
 

@@ -1,1 +1,1 @@
-from . import Measurement, GetMeasurement
+from . import Measurement, GetMeasurement, HistoryMeasurements
